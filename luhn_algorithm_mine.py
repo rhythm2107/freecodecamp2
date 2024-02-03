@@ -25,13 +25,12 @@ def verify_card_number(card_number):
     # Sums the even numbers
     for number2 in even_array:
         temp_result = (number2 * 2)
-        #print('Everything:', temp_result)
         if temp_result >= 10 :
             temp_result_str = str(temp_result)
             even_result_1 += (int(temp_result_str[0]) + int(temp_result_str[1]))
-            #print('Above 10:', even_result_1)
         else:
             even_result += temp_result
+            
     # Combines the result of odd and even numbers and prints whether card is valid or invalid
     even_result += even_result_1
     final_result = even_result + odd_result
