@@ -1,4 +1,8 @@
 def convert_to_snake_case(pascal_or_camel_cased_string):
+    
+    #Both ways perform the same task, but list comprehension is more concise and easy-to-read.
+
+    #This is a standard loop iteration approach.
     snake_cased_char_list = []
     for char in pascal_or_camel_cased_string:
         if char.isupper():
@@ -10,7 +14,8 @@ def convert_to_snake_case(pascal_or_camel_cased_string):
         clean_snake_cased_string = snake_cased_string.strip('_')
 
     return clean_snake_cased_string
-
+    
+    # This is a list comprehension approach.
     snake_cased_char_list = [
         '_' + char.lower() if char.isupper()
         else char
