@@ -1,4 +1,6 @@
 my_graph = {
-    'species': 'guinea pig',
-    'age': 2
+    'A': ['B', 'D'],
+    'B': ['A', 'C'],
+    'C': ['B', 'D'],
+    'D': ['A', 'C']
 }
