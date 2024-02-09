@@ -36,6 +36,6 @@ def generate_password(length=16, nums=1, special_chars=1, uppercase=1, lowercase
     return password
     
 if __name__ == '__main__':
-    new_password = generate_password()
+    new_password = generate_password(12)
     print('Generated password:', new_password)
 
