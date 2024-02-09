@@ -17,15 +17,25 @@ def generate_password(length, nums, special_chars, uppercase, lowercase):
         # Generate password
         for _ in range(length):
             password += secrets.choice(all_characters)
-        
+       
         constraints = [
-            (nums, '[0123456789]')
-        ]        
+            (nums, r'\d'),
+            (lowercase, r'[a-z]'),
+            (uppercase, r'[A-Z]'),            
+            (special_chars, fr'[{symbols}]')            
+        ]
 
-    return password
+        # Check constraints
+        count = 0
+        if all(
+            [
+                constraint <= len(re.findall(pattern, password))
+                for constraint, pattern in constraints
+            ]
+        ):
+            break
     
+    return password
+
 # new_password = generate_password(8)
 # print(new_password)
-pattern = 'w[ha]'
-quote = 'Not all those who wander are lost.'
-print(re.findall(pattern, quote))
