@@ -5,5 +5,12 @@ my_graph = {
     'D': [('A', 1), ('C', 7)]
 }
 
-def shortest_path():
-    pass
+def shortest_path(graph, start):
+    unvisited = []
+    distances = {}
+    for node in graph:
+        unvisited.append(node)
+        if node == start:
+            distances[node] = 0
+        else:
+            distances[node] = float('inf')
