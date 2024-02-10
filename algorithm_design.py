@@ -23,8 +23,8 @@ def shortest_path(graph, start, target = ''):
                 else:
                     paths[node].extend(paths[current])
                 paths[node].append(node)
+                print(paths)
         unvisited.remove(current)
-    
     targets_to_print = [target] if target else graph
     for node in targets_to_print:
         if node == start:
@@ -33,4 +33,4 @@ def shortest_path(graph, start, target = ''):
     
     return distances, paths
     
-shortest_path(my_graph, 'A', 'F')
+shortest_path(my_graph, 'A', 'E')
