@@ -1,5 +1,5 @@
 NUMBER_OF_DISKS = 4
-number_of_moves = 2**NUMBER_OF_DISKS - 1
+number_of_moves = 2 ** NUMBER_OF_DISKS - 1
 rods = {
     'A': list(range(NUMBER_OF_DISKS, 0, -1)),
     'B': [],
@@ -31,13 +31,19 @@ def move(n, source, auxiliary, target):
             if n % 2 != 0:
                 print(f'Move {i + 1} allowed between {source} and {target}')
                 make_allowed_move(source, target)
-            
+            else:
+                print(f'Move {i + 1} allowed between {source} and {auxiliary}')
+                make_allowed_move(source, auxiliary)
         elif remainder == 2:
-            print(f'Move {i + 1} allowed between {source} and {auxiliary}')
-            make_allowed_move(source, auxiliary)
+            if n % 2 != 0:
+                print(f'Move {i + 1} allowed between {source} and {auxiliary}')
+                make_allowed_move(source, auxiliary)
+            else:
+                print(f'Move {i + 1} allowed between {source} and {target}')
+                make_allowed_move(source, target)
         elif remainder == 0:
             print(f'Move {i + 1} allowed between {auxiliary} and {target}')
-            make_allowed_move(auxiliary, target)
-           
+            make_allowed_move(auxiliary, target)           
+
 # initiate call from source A to target C with auxiliary B
 move(NUMBER_OF_DISKS, 'A', 'B', 'C')
