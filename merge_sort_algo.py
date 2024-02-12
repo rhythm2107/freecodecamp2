@@ -34,7 +34,7 @@ def merge_sort(array):
 
 
 if __name__ == '__main__':
-    numbers = [4, 10, 6, 14, 2, 1, 8, 5]
+    numbers = [4, 10, 6, 14, 2, 1, 8, 5, 144, 128, 25, 38, 49, 59, 69, 79, 89, 99, 101, 102, 103, 104, 105, 106, 107, 108, 109, 200, 2022]
     print('Unsorted array: ')
     print(numbers)
     merge_sort(numbers)
