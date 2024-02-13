@@ -18,7 +18,7 @@ class Board:
             row = f'║ {" ".join(row_list)} ║\n'
             row_empty = row.replace('0', ' ')
             board_string += row_empty
-            
+
             if index < 8:
                 if index % 3 == 2:
                     board_string += f'╠═══{"╪═══"*2}{"╬═══"}{"╪═══"*2}{"╬═══"}{"╪═══"*2}╣\n'
@@ -28,8 +28,19 @@ class Board:
                 board_string += lower_lines
 
         return board_string
-    
+
     def find_empty_cell(self):
         for row, contents in enumerate(self.board):
             try:
                 col = contents.index(0)
+                return row, col
+            except ValueError:
+                pass
+        return None
+
+    def valid_in_row(self, row, num):
+        return num not in self.board[row]
+
+    def valid_in_col(self, col, num):
+        self.board[row][col] != num
+        for row in range(9)
