@@ -1,9 +1,7 @@
 class Board:
-    # Initializes the board object with 2D list representing the squares (0 for empty)
     def __init__(self, board):
         self.board = board
 
-    # Defines how to print the board in a formatted string with box separators and borders
     def __str__(self):
         upper_lines = f'\n╔═══{"╤═══"*2}{"╦═══"}{"╤═══"*2}{"╦═══"}{"╤═══"*2}╗\n'
         middle_lines = f'╟───{"┼───"*2}{"╫───"}{"┼───"*2}{"╫───"}{"┼───"*2}╢\n'
@@ -31,7 +29,6 @@ class Board:
 
         return board_string
 
-    # Finds the first empty (0) cell on the board as a tuple of row and column indices or returns None if all cells are filled
     def find_empty_cell(self):
         for row, contents in enumerate(self.board):
             try:
@@ -41,18 +38,15 @@ class Board:
                 pass
         return None
 
-    # Checks if the given number is already present in the specified row
     def valid_in_row(self, row, num):
         return num not in self.board[row]
 
-    # Checks if the given number is already present in the specified column
     def valid_in_col(self, col, num):
         return all(
             self.board[row][col] != num
             for row in range(9)
         )
 
-    # Checks if the given number is already present in the 3x3 square containing the specified cell
     def valid_in_square(self, row, col, num):
         row_start = (row // 3) * 3
         col_start=(col // 3) * 3
@@ -62,7 +56,6 @@ class Board:
                     return False
         return True
 
-    # Combines the above checks to ensure the given number can be placed in the empty cell without violating Sudoku rules
     def is_valid(self, empty, num):
         row, col = empty
         valid_in_row = self.valid_in_row(row, num)
@@ -70,7 +63,6 @@ class Board:
         valid_in_square = self.valid_in_square(row, col, num)
         return all([valid_in_row, valid_in_col, valid_in_square])
 
-    # Recursive backtracking solver function
     def solver(self):
         if (next_empty := self.find_empty_cell()) is None:
             return True
@@ -85,7 +77,6 @@ class Board:
 
         return False
 
-# Main solving function
 def solve_sudoku(board):
     gameboard = Board(board)
     print(f'\nPuzzle to solve:\n{gameboard}')
@@ -102,7 +93,7 @@ puzzle = [
   [4, 3, 0, 0, 0, 0, 8, 0, 0],
   [0, 5, 0, 0, 3, 0, 0, 9, 0],
   [0, 4, 0, 0, 0, 0, 0, 2, 6],
-  [0, 0, 0, 4, 6, 7, 0, 0, 0],
+  [0, 0, 0, 4, 6, 0, 0, 0, 0],
   [0, 8, 6, 7, 0, 4, 0, 0, 0],
   [0, 0, 0, 5, 1, 9, 0, 0, 8],
   [1, 7, 0, 0, 0, 6, 0, 0, 5]
