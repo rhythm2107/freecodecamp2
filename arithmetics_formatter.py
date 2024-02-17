@@ -2,9 +2,8 @@ import re
 
 test_list = ["32 + 69", "3801 - 2", "45 + 43", "123 + 49"]
 
-def arithmetic_arrange(list, solve=False):
+def arithmetic_arrange(list, solver=False):
     extracted_numbers = []
-    extracted_numbers2 = []
     # Takes care of lists longer than 5 problems
     if len(list) > 5:
         print('Error: Too many problems.')
@@ -15,7 +14,7 @@ def arithmetic_arrange(list, solve=False):
             print("Error: Operator must be '+' or '-'.")
         
         # Takes care of lists trying to input [A-Z] instead of digits, might need to make this not work for other signs as well
-        regex_AZ = re.findall("[A-Z]", problem)
+        regex_AZ = re.findall("[A-Za-z]", problem)
         if regex_AZ:
             print("Error: Numbers must only contain digits.")
 
@@ -26,12 +25,6 @@ def arithmetic_arrange(list, solve=False):
         extracted_numbers.extend(numbers)
     if extracted_numbers:
         print('Error: Numbers cannot be more than four digits.')
-
-    # Output
-    for item in test_list:
-        numbers = [int(num) for num in item.split() if num.isdigit()]
-        extracted_numbers2.extend(numbers)
-    print(extracted_numbers2)
 
 
 
