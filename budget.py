@@ -4,6 +4,9 @@ class Category:
         self.name = name
         self.ledger = []
 
+    def __str__(self):
+        pass
+
     def deposit(self, amount, description=''):
         self.amount = amount
         self.description = description
@@ -43,24 +46,23 @@ class Category:
         else:
             return False
     
-# food = Category("Food")
-# food.deposit(1000, "initial deposit")
-# food.deposit(500, "crypto airdrop")
-# food.withdraw(-750, "sushi")
-# clothes = Category("Clothes")
-# clothes.deposit(5000, "gucci tshirt")
-# clothes.deposit(1000, "kalvin klein")
-# clothes.deposit(-850, "yellow jacket")
-# total_amount = clothes.get_balance()
-# total_amount = food.get_balance()
-# print(total_amount)
-# print(food.ledger)
-# print(clothes.ledger)
-# food.transfer(50, clothes)
-# print(total_amount)
-# print(food.ledger)
-# print(clothes.ledger)
-
+food = Category("Food")
+food.deposit(1000, "initial deposit")
+food.deposit(500, "crypto airdrop")
+food.withdraw(-750, "sushi")
+clothes = Category("Clothes")
+clothes.deposit(5000, "gucci tshirt")
+clothes.deposit(1000, "kalvin klein")
+clothes.deposit(-850, "yellow jacket")
+total_amount = clothes.get_balance()
+total_amount = food.get_balance()
+print(total_amount)
+print(food.ledger)
+print(clothes.ledger)
+food.transfer(50, clothes)
+print(total_amount)
+print(food.ledger)
+print(clothes.ledger)
 
 def create_spend_chart(categories):
     pass
