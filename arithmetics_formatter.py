@@ -13,7 +13,7 @@ def arithmetic_arranger(list, solver=False):
         if problem.count('*') > 0 or problem.count('/') > 0:
             return "Error: Operator must be '+' or '-'."
         
-        # Takes care of lists trying to input [A-Z] instead of digits, might need to make this not work for other signs as well
+        # Takes care of lists trying to input letters
         regex_AZ = re.findall("[A-Za-z]", problem)
         if regex_AZ:
             return "Error: Numbers must only contain digits."
@@ -26,6 +26,7 @@ def arithmetic_arranger(list, solver=False):
     if extracted_numbers:
         return "Error: Numbers cannot be more than four digits."
 
+    # Converts list of problems into list of tuples like (first_num, operator, second_num)
     output_list = []
     for item in list:
         # Split the item into numbers and operand using regular expression
@@ -41,6 +42,7 @@ def arithmetic_arranger(list, solver=False):
         else:
             print(f"Error: Invalid expression: {item}")
 
+    # Initialize variables before loop
     length = 6
     solution = 0
     top_line = ''
@@ -59,13 +61,8 @@ def arithmetic_arranger(list, solver=False):
         elif operator == '-':
             solution = first_num - second_num
 
-        # Getting dash count/width
+        # Padding & Length & Output
         length = 2 + max(len(str(first_num)), len(str(second_num)))
-        #print('Length:', length)
-
-        #print(str(first_num).rjust(length))
-        #print(str(operator), str(second_num).rjust(length-2))
-        #print('-' * length)
 
         top_line += f"{str(first_num).rjust(length)}{' '*4}"
         middle_line += f"{operator} {str(second_num).rjust(length-2)}{' '*4}"
