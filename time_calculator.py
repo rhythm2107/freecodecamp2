@@ -1,5 +1,5 @@
-testing = '11:02 AM'
-duration2 = '424:02'
+testing = '11:55 AM'
+duration2 = '3:12'
 
 def add_time(start, duration, day=None):
     
@@ -47,6 +47,11 @@ def add_time(start, duration, day=None):
     result_m = start_tuple[1] + duration_tuple[1]
     
     while result_m > 60:
+        if is_AM == False and start_tuple[0] == 11:
+            days_later += 1
+            is_AM = True
+        elif is_AM == True and start_tuple[0] == 11:
+            is_AM = False
         result_m -= 60
         result_h += 1
 
@@ -81,22 +86,28 @@ def add_time(start, duration, day=None):
     elif is_AM == False:
         str_result_ampm = 'PM'
     
-    hour_result = (f'{str_result_h + ':' + str_result_m + ' ' + str_result_ampm}')
-
-    print(days_later)
+    hour_result = f'{str_result_h}:{str_result_m} {str_result_ampm}'
+    
     if day == None:
         if days_later == 0:
-            print(hour_result)
+            print(hour_Result)
+            return hour_result
         elif days_later == 1:
-            print(f'{hour_result} (next day)')
+            result_to_return = f'{hour_result} (next day)'
+            print(result_to_return)
+            return result_to_return
         elif days_later > 1:
             print(f'{hour_result} ({days_later} days later)')
+            return f'{hour_result} ({days_later} days later)'
     else:
         if days_later == 0:
             print(f'{hour_result}, {str_result_d.capitalize()}')
+            return f'{hour_result}, {str_result_d.capitalize()}'
         elif days_later == 1:
             print(f'{hour_result}, {str_result_d.capitalize()} (next day)')
+            return f'{hour_result}, {str_result_d.capitalize()} (next day)'
         elif days_later > 1:
             print(f'{hour_result}, {str_result_d.capitalize()} ({days_later} days later)')
+            return f'{hour_result}, {str_result_d.capitalize()} ({days_later} days later)'
 
-add_time(testing, duration2, 'Monday')
+add_time(testing, duration2)
