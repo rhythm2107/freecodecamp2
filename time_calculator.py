@@ -30,7 +30,7 @@ def add_time(start, duration, day=None):
     result_h = 0
     result_m = 0
     result_d = 0
-    is_AM = None
+    meridien = ''
     days_later = 0
 
     # Extracting start and duration time
@@ -38,28 +38,38 @@ def add_time(start, duration, day=None):
     duration_tuple = extract_time_to_tuple(duration)
     
     # Main time calculations
+    # Setting AM/PM
     if start_tuple[2] == 'AM':
-        is_AM = True
+        meridien = 'AM'
     elif start_tuple[2] == 'PM':
-        is_AM = False
+        meridien = 'PM'
 
+    # Calculating total minutes & hours
     result_h = start_tuple[0] + duration_tuple[0]
     result_m = start_tuple[1] + duration_tuple[1]
-    
+
+    # Taking care of edge cases where both hours and minutes can change meridien
     while result_m > 60:
-        if is_AM == False and start_tuple[0] == 11:
+
+        if meridien == 'PM' and start_tuple[0] == 11:
             days_later += 1
-            is_AM = True
-        elif is_AM == True and start_tuple[0] == 11:
-            is_AM = False
+            meridien = 'AM'
+        elif meridien == 'PM' and start_tuple[0] == 11 and (start_tuple[0] + duration_tuple[0]) > 12:
+            pass
+        elif meridien == 'AM' and start_tuple[0] == 11 and (start_tuple[0] + duration_tuple[0]) > 12:
+            pass
+        elif meridien == 'AM' and start_tuple[0] == 11:
+            meridien = 'PM'
+            if result_h > 11:
+                days_later -= 1
         result_m -= 60
         result_h += 1
 
     while result_h > 12:
-        if is_AM == True:
-            is_AM = False 
+        if meridien == 'AM':
+            meridien = 'PM' 
         else:
-            is_AM = True
+            meridien = 'AM'
             days_later += 1
         result_h -= 12
 
@@ -81,33 +91,28 @@ def add_time(start, duration, day=None):
         if val == result_d:
             str_result_d = key
 
-    if is_AM == True:
+    if meridien == 'AM':
         str_result_ampm = 'AM'
-    elif is_AM == False:
+    elif meridien == 'PM':
         str_result_ampm = 'PM'
     
     hour_result = f'{str_result_h}:{str_result_m} {str_result_ampm}'
     
+    # Return statements depending on input
     if day == None:
         if days_later == 0:
-            print(hour_Result)
             return hour_result
         elif days_later == 1:
             result_to_return = f'{hour_result} (next day)'
-            print(result_to_return)
             return result_to_return
         elif days_later > 1:
-            print(f'{hour_result} ({days_later} days later)')
             return f'{hour_result} ({days_later} days later)'
     else:
         if days_later == 0:
-            print(f'{hour_result}, {str_result_d.capitalize()}')
             return f'{hour_result}, {str_result_d.capitalize()}'
         elif days_later == 1:
-            print(f'{hour_result}, {str_result_d.capitalize()} (next day)')
             return f'{hour_result}, {str_result_d.capitalize()} (next day)'
         elif days_later > 1:
-            print(f'{hour_result}, {str_result_d.capitalize()} ({days_later} days later)')
             return f'{hour_result}, {str_result_d.capitalize()} ({days_later} days later)'
 
 add_time(testing, duration2)
