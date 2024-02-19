@@ -5,7 +5,34 @@ class Category:
         self.ledger = []
 
     def __str__(self):
-        pass
+        left_stars = (30 - len(self.name)) // 2 # 12 for foods
+        right_stars = 30 - len(self.name) - left_stars # 13 fod foods
+        total = self.get_balance()
+
+        header_line = f'{'*' * left_stars}{self.name}{'*' * right_stars}'
+        total_line = f'Total: {total}'
+        
+        transactions = header_line + '\n'
+        
+
+        for item in self.ledger:
+            description = item["description"]
+            amount = str(item["amount"])
+            if amount.count('.') == 0:
+                amount += '.00'
+
+            desc_len = 0
+            if len(description) >= 23:
+                desc_len = 23
+            else:
+                desc_len = len(description)
+            
+            ledger_line = f'{description[:23]}{' ' * (30-desc_len-len(amount))}{amount.rjust(1)}\n'
+            transactions += ledger_line
+
+        transactions += total_line
+
+        return transactions
 
     def deposit(self, amount, description=''):
         self.amount = amount
@@ -47,7 +74,7 @@ class Category:
             return False
     
 food = Category("Food")
-food.deposit(1000, "initial deposit")
+food.deposit(1000, "initial deposit and testing")
 food.deposit(500, "crypto airdrop")
 food.withdraw(-750, "sushi")
 clothes = Category("Clothes")
@@ -63,6 +90,7 @@ food.transfer(50, clothes)
 print(total_amount)
 print(food.ledger)
 print(clothes.ledger)
+print(food)
 
 def create_spend_chart(categories):
     pass
