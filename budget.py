@@ -9,7 +9,7 @@ class Category:
         right_stars = 30 - len(self.name) - left_stars # 13 fod foods
         total = self.get_balance()
 
-        header_line = f'{'*' * left_stars}{self.name}{'*' * right_stars}'
+        header_line = f"{'*' * left_stars}{self.name}{'*' * right_stars}"
         total_line = f'Total: {total}'
         
         transactions = header_line + '\n'
@@ -27,7 +27,7 @@ class Category:
             else:
                 desc_len = len(description)
             
-            ledger_line = f'{description[:23]}{' ' * (30-desc_len-len(amount))}{amount.rjust(1)}\n'
+            ledger_line = f"{description[:23]}{' ' * (30-desc_len-len(amount))}{amount.rjust(1)}\n"
             transactions += ledger_line
 
         transactions += total_line
@@ -44,7 +44,8 @@ class Category:
         self.description = description
 
         if self.check_funds(amount):
-            self.ledger.append({"amount": amount, "description": description})
+            negated_amount = -amount
+            self.ledger.append({"amount": negated_amount, "description": description})
             return True
         else:
             return False
@@ -68,7 +69,7 @@ class Category:
         
     def check_funds(self, amount):
 
-        if self.get_balance() > abs(amount):
+        if self.get_balance() >= abs(amount):
             return True
         else:
             return False
@@ -76,7 +77,7 @@ class Category:
 food = Category("Food")
 food.deposit(1000, "initial deposit and testing")
 food.deposit(500, "crypto airdrop")
-food.withdraw(-750, "sushi")
+food.withdraw(750, "sushi")
 clothes = Category("Clothes")
 clothes.deposit(5000, "gucci tshirt")
 clothes.deposit(1000, "kalvin klein")
@@ -93,4 +94,6 @@ print(clothes.ledger)
 print(food)
 
 def create_spend_chart(categories):
-    pass
+    
+    for category in categories:
+        pass
