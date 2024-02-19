@@ -73,6 +73,14 @@ class Category:
             return True
         else:
             return False
+        
+    def check_withdrawals(self):
+        withdrawals = 0
+        for item in self.ledger:
+            if item["amount"] < 0:
+                withdrawals += item["amount"]
+        return withdrawals
+
     
 food = Category("Food")
 food.deposit(1000, "initial deposit and testing")
@@ -84,16 +92,51 @@ clothes.deposit(1000, "kalvin klein")
 clothes.deposit(-850, "yellow jacket")
 total_amount = clothes.get_balance()
 total_amount = food.get_balance()
+entertainment = Category("Entertainment")
+entertainment.deposit(531, "lets have fun")
+entertainment.deposit(123, "sold my speakers")
+entertainment.withdraw(222, "buying new speakers")
 print(total_amount)
 print(food.ledger)
 print(clothes.ledger)
+print(entertainment.ledger)
 food.transfer(50, clothes)
 print(total_amount)
 print(food.ledger)
 print(clothes.ledger)
 print(food)
+print(entertainment.ledger)
+
 
 def create_spend_chart(categories):
+
+    final_graph = 'Percentage spent by category\n'
+    total_spendings = 0
+    cat_dict = {}
     
     for category in categories:
-        pass
+        cat_withdraw = category.check_withdrawals()
+        cat_name = category.name
+        total_spendings += cat_withdraw
+        cat_dict[cat_name] = cat_withdraw
+    
+    for key, val in cat_dict.items():
+        percentage = (val / total_spendings * 100) // 10 * 10
+        percentage = int(percentage)
+        cat_dict[key] = percentage
+    
+    i = 0
+    while i != 110:
+        percent_level = 100 - i
+        final_graph += f'{str(percent_level).rjust(3)}| {'o' if 60 >= percent_level else ""}\n'
+        i += 10
+
+        
+
+
+    print('total', total_spendings)
+    print(cat_dict)
+    print(final_graph)
+
+create_spend_chart([food, clothes, entertainment])
+food.check_withdrawals()
