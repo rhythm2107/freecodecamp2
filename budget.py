@@ -145,11 +145,14 @@ def create_spend_chart(categories):
 
     keys_list = list(cat_dict.keys())
     max_length = max(len(word) for word in keys_list)
+    final_result += '\n'
 
     for i in range(max_length):
         formatted_row = ""
         for key in keys_list:
-            formatted_row += key[i] + " " if i < len(key) else "  "  # Pad with two spaces
+            formatted_row += key[i] + "  " if i < len(key) else "   "  # Pad with two spaces
+        final_result += formatted_row.rjust(14)
+        final_result += '\n'
         print(formatted_row)
         
     print(cat_dict)
