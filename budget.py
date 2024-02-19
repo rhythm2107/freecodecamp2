@@ -81,31 +81,17 @@ class Category:
                 withdrawals += item["amount"]
         return withdrawals
 
-    
 food = Category("Food")
-food.deposit(1000, "initial deposit and testing")
-food.deposit(500, "crypto airdrop")
-food.withdraw(750, "sushi")
-clothes = Category("Clothes")
-clothes.deposit(5000, "gucci tshirt")
-clothes.deposit(1000, "kalvin klein")
-clothes.deposit(-850, "yellow jacket")
-total_amount = clothes.get_balance()
-total_amount = food.get_balance()
 entertainment = Category("Entertainment")
-entertainment.deposit(531, "lets have fun")
-entertainment.deposit(123, "sold my speakers")
-entertainment.withdraw(222, "buying new speakers")
-print(total_amount)
-print(food.ledger)
-print(clothes.ledger)
-print(entertainment.ledger)
-food.transfer(50, clothes)
-print(total_amount)
-print(food.ledger)
-print(clothes.ledger)
-print(food)
-print(entertainment.ledger)
+business = Category("Business")
+
+food.deposit(900, "deposit")
+entertainment.deposit(900, "deposit")
+business.deposit(900, "deposit")
+
+food.withdraw(105.55)
+entertainment.withdraw(33.40)
+business.withdraw(10.99)
 
 
 def create_spend_chart(categories):
@@ -127,6 +113,7 @@ def create_spend_chart(categories):
     
     final_result = 'Percentage spent by category\n'
     
+    # I believe problem is here
     i = 0
     while i != 110: 
         percent_level = 100 - i
@@ -136,11 +123,10 @@ def create_spend_chart(categories):
             if cat_dict[cat_name] >= percent_level:
                 final_result += ' o '
             else:
-                final_result += '   '
+                final_result += " " * 3
         final_result += '\n'
         i += 10
-    test = len(categories)
-    print(test)
+    
     final_result += f"    {'---' * len(categories)}{'-'}"
 
     keys_list = list(cat_dict.keys())
@@ -153,10 +139,8 @@ def create_spend_chart(categories):
             formatted_row += key[i] + "  " if i < len(key) else "   "  # Pad with two spaces
         final_result += formatted_row.rjust(14)
         final_result += '\n'
-        print(formatted_row)
-        
-    print(cat_dict)
     print(final_result)
 
-create_spend_chart([food, clothes, entertainment])
-food.check_withdrawals()
+    print('LENGTH:', len(final_result))
+
+create_spend_chart([business, food, entertainment])
