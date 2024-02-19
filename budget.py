@@ -114,9 +114,9 @@ def create_spend_chart(categories):
     total_spendings = 0
     cat_dict = {}
     
-    for category in categories:
-        cat_withdraw = category.check_withdrawals()
-        cat_name = category.name
+    for categ in categories:
+        cat_withdraw = categ.check_withdrawals()
+        cat_name = categ.name
         total_spendings += cat_withdraw
         cat_dict[cat_name] = cat_withdraw
     
@@ -125,18 +125,35 @@ def create_spend_chart(categories):
         percentage = int(percentage)
         cat_dict[key] = percentage
     
+    final_result = 'Percentage spent by category\n'
+    
     i = 0
-    while i != 110:
+    while i != 110: 
         percent_level = 100 - i
-        final_graph += f'{str(percent_level).rjust(3)}| {'o' if 60 >= percent_level else ""}\n'
+        final_result += f'{str(percent_level).rjust(3)}|'
+        for categ in categories:
+            cat_name = categ.name
+            if cat_dict[cat_name] >= percent_level:
+                final_result += ' o '
+            else:
+                final_result += '   '
+        final_result += '\n'
         i += 10
+    test = len(categories)
+    print(test)
+    final_result += f"    {'---' * len(categories)}{'-'}"
 
+    keys_list = list(cat_dict.keys())
+    max_length = max(len(word) for word in keys_list)
+
+    for i in range(max_length):
+        formatted_row = ""
+        for key in keys_list:
+            formatted_row += key[i] + " " if i < len(key) else "  "  # Pad with two spaces
+        print(formatted_row)
         
-
-
-    print('total', total_spendings)
     print(cat_dict)
-    print(final_graph)
+    print(final_result)
 
 create_spend_chart([food, clothes, entertainment])
 food.check_withdrawals()
