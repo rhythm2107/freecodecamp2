@@ -62,28 +62,3 @@ rect = Rectangle(4, 8)
 sqr = Square(12)
 rect.get_amount_inside(sqr)
 sqr.get_amount_inside(rect)
-
-
-# print('Area:', rect.get_area())
-# print('Perimeter:', rect.get_perimeter())
-# rect.set_height(3)
-# print('Area:', rect.get_area())
-# print('Perimeter:', rect.get_perimeter())
-# print(rect)
-# print(rect.get_diagonal())
-# print(rect.get_picture())
-
-# print(sqr.get_picture())
-# print(rect.get_picture())
-
-
-# sq = Square(9)
-# print(sq.get_area())
-# sq.set_side(4)
-# print(sq.get_diagonal())
-# print(sq)
-# print(sq.get_picture())
-
-# rect.set_height(8)
-# rect.set_width(16)
-# print(rect.get_amount_inside(sq))
