@@ -20,15 +20,26 @@ class Hat:
         for item in self.unpack:
             for word in item:
                 self.contents.append(word)
-        # print(self.contents)
-        # print(kwargs)
 
     def draw(self, amount):
-        pass
+        draw_list = self.contents
+        draw_result = []
+
+        if amount > len(draw_list):
+            raise ValueError("The amount of draws exceeds the amount of balls in the hat.")
+
+        print('This is the full list before draw\n', draw_list)
+        for i in range(amount):
+            random_ball = random.choice(draw_list)
+            draw_list.remove(random_ball)
+            draw_result.append(random_ball)
+        print('This is the remaining list\n', draw_list)
+        print('This is the list of results\n', draw_result)
 
 
 
 hat = Hat(one=1, two=2, yellow=7, green=5, test=10, whiteboy=2, password=5, omegalul=3, white=2)
+hat.draw(15)
 
 def experiment(hat, expected_balls, num_balls_drawn, num_experiments):
     pass
