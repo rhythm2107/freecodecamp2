@@ -38,6 +38,7 @@ class Category:
         self.amount = amount
         self.description = description
         self.ledger.append({"amount": amount, "description": description})
+        return f"Deposit of {self.amount} in category {self.name} was successful."
 
     def withdraw(self, amount, description=''):
         self.amount = amount
@@ -86,7 +87,7 @@ food = Category("Food")
 entertainment = Category("Entertainment")
 business = Category("Business")
 
-food.deposit(900, "deposit")
+print(food.deposit(900, "deposit"))
 entertainment.deposit(900, "deposit")
 business.deposit(900, "deposit")
 
