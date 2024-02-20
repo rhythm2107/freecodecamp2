@@ -30,9 +30,13 @@ class Rectangle:
         else:
             for i in range(self.height):
                 picture += f"{'*' * self.width}\n"
+        return picture
     
-    def get_amount_inside(self):
-        pass
+    def get_amount_inside(self, shape):
+        column = self.width // shape.width
+        row = self.height // shape.height
+        count = column * row
+        return count
 
 class Square(Rectangle):
 
@@ -49,17 +53,17 @@ class Square(Rectangle):
         self.width = side
         self.height = side
 
-    def set_width(self, width):
-        self.width = width
-        self.height = width
-
-    def set_height(self, height):
-        self.width = height
-        self.height = height
+    # Definining aliases for same method
+    set_height = set_width = set_side
 
 
 # Testing
-rect = Rectangle(10, 5)
+rect = Rectangle(4, 8)
+sqr = Square(12)
+rect.get_amount_inside(sqr)
+sqr.get_amount_inside(rect)
+
+
 # print('Area:', rect.get_area())
 # print('Perimeter:', rect.get_perimeter())
 # rect.set_height(3)
@@ -68,11 +72,10 @@ rect = Rectangle(10, 5)
 # print(rect)
 # print(rect.get_diagonal())
 # print(rect.get_picture())
-sqr = Square(10)
-print(rect)
-print(sqr)
-sqr.set_side(20)
-print(sqr)
+
+# print(sqr.get_picture())
+# print(rect.get_picture())
+
 
 # sq = Square(9)
 # print(sq.get_area())
