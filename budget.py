@@ -5,8 +5,8 @@ class Category:
         self.ledger = []
 
     def __str__(self):
-        left_stars = (30 - len(self.name)) // 2 # 12 for foods
-        right_stars = 30 - len(self.name) - left_stars # 13 fod foods
+        left_stars = (30 - len(self.name)) // 2
+        right_stars = 30 - len(self.name) - left_stars
         total = self.get_balance()
 
         header_line = f"{'*' * left_stars}{self.name}{'*' * right_stars}"
@@ -81,6 +81,7 @@ class Category:
                 withdrawals += item["amount"]
         return withdrawals
 
+# Some testing values
 food = Category("Food")
 entertainment = Category("Entertainment")
 business = Category("Business")
@@ -96,24 +97,25 @@ business.withdraw(10.99)
 
 def create_spend_chart(categories):
 
-    final_graph = 'Percentage spent by category\n'
+    # Initiate values
+    final_result = 'Percentage spent by category\n'
     total_spendings = 0
     cat_dict = {}
     
+    # Iterate over input categories and extract to dictionary
     for categ in categories:
         cat_withdraw = categ.check_withdrawals()
         cat_name = categ.name
         total_spendings += cat_withdraw
         cat_dict[cat_name] = cat_withdraw
     
+    # Convert values to percent values rounded down to a multiplier of 10
     for key, val in cat_dict.items():
         percentage = (val / total_spendings * 100) // 10 * 10
         percentage = int(percentage)
         cat_dict[key] = percentage
     
-    final_result = 'Percentage spent by category\n'
-    
-    # I believe problem is here
+    # Visualize text chart
     i = 0
     while i != 110: 
         percent_level = 100 - i
@@ -128,8 +130,10 @@ def create_spend_chart(categories):
         final_result += '\n'
         i += 10
     
+    # Dashes to separate chart from vertical category names
     final_result += f"    {'---' * len(categories)}{'-'}"
 
+    # Visualize vertical category names below text chart
     keys_list = list(cat_dict.keys())
     max_length = max(len(word) for word in keys_list)
     final_result += '\n'
