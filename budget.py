@@ -124,6 +124,7 @@ def create_spend_chart(categories):
                 final_result += ' o '
             else:
                 final_result += " " * 3
+        final_result += " "
         final_result += '\n'
         i += 10
     
@@ -138,9 +139,8 @@ def create_spend_chart(categories):
         for key in keys_list:
             formatted_row += key[i] + "  " if i < len(key) else "   "  # Pad with two spaces
         final_result += formatted_row.rjust(14)
-        final_result += '\n'
-    print(final_result)
-
-    print('LENGTH:', len(final_result))
+        if i != max_length-1:
+            final_result += '\n'
+    return final_result
 
 create_spend_chart([business, food, entertainment])
