@@ -7,7 +7,9 @@ class Hat:
 
         if not kwargs:
             raise ValueError("You need to pass at least one argument to the function.")
-        
+        print(kwargs)
+        print(type(kwargs))
+        print(len(kwargs))
         # Initialize two lists for operations below
         self.unpack = []
         self.contents = []
@@ -24,22 +26,31 @@ class Hat:
     def draw(self, amount):
         draw_list = self.contents
         draw_result = []
+        result_dict = {}
 
         if amount > len(draw_list):
             raise ValueError("The amount of draws exceeds the amount of balls in the hat.")
 
-        print('This is the full list before draw\n', draw_list)
         for i in range(amount):
             random_ball = random.choice(draw_list)
             draw_list.remove(random_ball)
             draw_result.append(random_ball)
-        print('This is the remaining list\n', draw_list)
-        print('This is the list of results\n', draw_result)
+            
+        for word in draw_result:
+            result_dict[word] = result_dict.get(word, 0) + 1
 
-
-
-hat = Hat(one=1, two=2, yellow=7, green=5, test=10, whiteboy=2, password=5, omegalul=3, white=2)
-hat.draw(15)
+        return result_dict
 
 def experiment(hat, expected_balls, num_balls_drawn, num_experiments):
-    pass
+    experiment_draw = []
+    hat_reset = hat
+    for i in range(5):
+        print('ITERATION', hat.contents)
+        experiment_draw = hat_reset.draw(num_balls_drawn)
+        #print('Results:', experiment_draw)
+
+test_dict = {"yellow":2, "green":2}
+
+hat = Hat(yellow=10, green=10, blue=10)
+
+experiment(hat, test_dict, 5, 50)
