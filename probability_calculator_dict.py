@@ -7,8 +7,6 @@ class Hat:
 
         if not kwargs:
             raise ValueError("You need to pass at least one argument to the function.")
-        
-        print(kwargs)
 
         # Initialize two lists for operations below
         self.unpack = []
@@ -61,15 +59,15 @@ def experiment(hat, expected_balls, num_balls_drawn, num_experiments):
         if count == len(expected_balls):
             experiment_success_count += 1
 
-    probability = experiment_success_count / (num_experiments) * 100
+    probability = experiment_success_count / (num_experiments)
     return probability
 
 # Testing
 my_dict = {"yellow":1,"green":1}
-their_dict = {"yellow":2,"blue":3,"test":1}
-hat = Hat(yellow=5,red=1,green=3,blue=9,test=1)
+their_dict = {"blue":2,"green":1}
+hat = Hat(blue=3,red=2,green=6)
 mine = Hat(yellow=2, green=2)
 print('Contents theirs', hat.contents)
 print('Contents mine', mine.contents)
 print('My experiment', experiment(mine, my_dict, 5, 100))
-print('Their experiment', experiment(hat, their_dict, 21, 100))
+print('Their experiment', experiment(hat, their_dict, 4, 1000))
