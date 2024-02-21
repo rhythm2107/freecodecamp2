@@ -18,7 +18,7 @@ class Hat:
         for key, val in kwargs.items():
             self.unpack.append([key] * val)
 
-        # Convert list of lists into one list of hat contents
+        # Convert list of lists into one list of hat contents 
         for item in self.unpack:
             for word in item:
                 self.contents.append(word)
