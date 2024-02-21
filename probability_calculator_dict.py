@@ -64,7 +64,7 @@ def experiment(hat, expected_balls, num_balls_drawn, num_experiments):
 
 # Testing
 my_dict = {"yellow":1,"green":1}
-their_dict = {"blue":2,"green":1}
+their_dict = {"blue":3,"green":1}
 hat = Hat(blue=3,red=2,green=6)
 mine = Hat(yellow=2, green=2)
 print('Contents theirs', hat.contents)
