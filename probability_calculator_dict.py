@@ -1,7 +1,7 @@
 import copy
 import random
 # Consider using the modules imported above.
-
+random.seed(95)
 class Hat:
     def __init__(self, **kwargs):
 
@@ -29,16 +29,17 @@ class Hat:
         result_dict = {}
 
         if amount > len(draw_list):
-            raise ValueError("The amount of draws exceeds the amount of balls in the hat.")
-
-        for i in range(amount):
-            random_ball = random.choice(draw_list)
-            draw_list.remove(random_ball)
-            draw_result.append(random_ball)
+            for word in draw_list:
+                result_dict[word] = result_dict.get(word, 0) + 1
+        else:
+            for i in range(amount):
+                random_ball = random.choice(draw_list)
+                draw_list.remove(random_ball)
+                draw_result.append(random_ball)
+                
+            for word in draw_result:
+                result_dict[word] = result_dict.get(word, 0) + 1
             
-        for word in draw_result:
-            result_dict[word] = result_dict.get(word, 0) + 1
-        
         return result_dict
 
 def experiment(hat, expected_balls, num_balls_drawn, num_experiments):
@@ -60,10 +61,15 @@ def experiment(hat, expected_balls, num_balls_drawn, num_experiments):
         if count == len(expected_balls):
             experiment_success_count += 1
 
-    probability = experiment_success_count / (num_experiments - 1) * 100
+    probability = experiment_success_count / (num_experiments) * 100
     return probability
 
-
-test_dict={"blue":2,"green":1}
-hat = Hat(yellow=10, green=10, blue=10)
-print(experiment(hat, test_dict, 4, 1000))
+# Testing
+my_dict = {"yellow":1,"green":1}
+their_dict = {"yellow":2,"blue":3,"test":1}
+hat = Hat(yellow=5,red=1,green=3,blue=9,test=1)
+mine = Hat(yellow=2, green=2)
+print('Contents theirs', hat.contents)
+print('Contents mine', mine.contents)
+print('My experiment', experiment(mine, my_dict, 5, 100))
+print('Their experiment', experiment(hat, their_dict, 21, 100))
