@@ -7,9 +7,7 @@ class Hat:
 
         if not kwargs:
             raise ValueError("You need to pass at least one argument to the function.")
-        print(kwargs)
-        print(type(kwargs))
-        print(len(kwargs))
+        
         # Initialize two lists for operations below
         self.unpack = []
         self.contents = []
@@ -43,14 +41,14 @@ class Hat:
 
 def experiment(hat, expected_balls, num_balls_drawn, num_experiments):
     experiment_draw = []
-    hat_reset = hat
-    for i in range(5):
-        print('ITERATION', hat.contents)
+
+    for i in range(num_experiments):
+        hat_reset = copy.deepcopy(hat)
         experiment_draw = hat_reset.draw(num_balls_drawn)
-        #print('Results:', experiment_draw)
+        print('Results:', experiment_draw)
 
 test_dict = {"yellow":2, "green":2}
 
 hat = Hat(yellow=10, green=10, blue=10)
 
-experiment(hat, test_dict, 5, 50)
+experiment(hat, test_dict, 5, 5)
