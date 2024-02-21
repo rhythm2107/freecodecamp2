@@ -16,8 +16,8 @@ Ten projects with hints on what concepts to use:
 10. Tree Traversal using **Binary Search Tree** *(My attempt: [1](https://github.com/rhythm2107/freecodecamp2/blob/main/tree_traversal.py))*
 
 And five projects without any hints:
-1. Arithmetic Formatter
-2. Time Calculator
-3. Budget App
-4. Polygon Area Calculator
-5. Probability Calculator
+1. Arithmetic Formatter *My attempt: [1](https://github.com/rhythm2107/freecodecamp2/blob/main/arithmetics_formatter.py)*.
+2. Time Calculator *My attempt: [1](https://github.com/rhythm2107/freecodecamp2/blob/main/time_calculator.py)*.
+3. Budget App *My attempt: [1](https://github.com/rhythm2107/freecodecamp2/blob/main/budget_tracker.py)*.
+4. Polygon Area Calculator *My attempt: [1](https://github.com/rhythm2107/freecodecamp2/blob/main/shape_calculator.py)*.
+5. Probability Calculator *My attempt: [1](https://github.com/rhythm2107/freecodecamp2/blob/main/probability_calculator_dict.py), [2](https://github.com/rhythm2107/freecodecamp2/blob/main/probability_calculator_list.py)*.
