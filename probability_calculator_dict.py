@@ -1,7 +1,7 @@
 import copy
 import random
 # Consider using the modules imported above.
-random.seed(95)
+
 class Hat:
     def __init__(self, **kwargs):
 
