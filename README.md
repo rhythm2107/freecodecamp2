@@ -1,6 +1,8 @@
 ## FreeCodeCamp - Scientific Computing with Python
 This is a repository with all projects that I created by coding along with FreeCodeCamp's intermediate Python course. This course is fully **practical** and **interactive**, giving hints but not answers, forcing you to **do your own research** and find the correct approach & solution. You can check their course [-here-](https://www.freecodecamp.org/learn/scientific-computing-with-python/).
 
+My certification confirming completion of the course: [-link-](https://www.freecodecamp.org/certification/fccd97130e7-5c4d-425e-a576-408d8cfa3c64/scientific-computing-with-python-v7)
+
 The course will require you to create **15 projects**, each of which focus on different concept *(check list below)*.
 
 Ten projects with hints on what concepts to use:
@@ -16,8 +18,8 @@ Ten projects with hints on what concepts to use:
 10. Tree Traversal using **Binary Search Tree** *(My attempt: [1](https://github.com/rhythm2107/freecodecamp2/blob/main/tree_traversal.py))*
 
 And five projects without any hints:
-1. Arithmetic Formatter *My attempt: [1](https://github.com/rhythm2107/freecodecamp2/blob/main/arithmetics_formatter.py)*.
-2. Time Calculator *My attempt: [1](https://github.com/rhythm2107/freecodecamp2/blob/main/time_calculator.py)*.
-3. Budget App *My attempt: [1](https://github.com/rhythm2107/freecodecamp2/blob/main/budget_tracker.py)*.
-4. Polygon Area Calculator *My attempt: [1](https://github.com/rhythm2107/freecodecamp2/blob/main/shape_calculator.py)*.
-5. Probability Calculator *My attempt: [1](https://github.com/rhythm2107/freecodecamp2/blob/main/probability_calculator_dict.py), [2](https://github.com/rhythm2107/freecodecamp2/blob/main/probability_calculator_list.py)*.
+1. Arithmetic Formatter *(My attempt: [1](https://github.com/rhythm2107/freecodecamp2/blob/main/arithmetics_formatter.py))*.
+2. Time Calculator *(My attempt: [1](https://github.com/rhythm2107/freecodecamp2/blob/main/time_calculator.py))*.
+3. Budget App *(My attempt: [1](https://github.com/rhythm2107/freecodecamp2/blob/main/budget_tracker.py))*.
+4. Polygon Area Calculator *(My attempt: [1](https://github.com/rhythm2107/freecodecamp2/blob/main/shape_calculator.py))*.
+5. Probability Calculator *(My attempt: [1](https://github.com/rhythm2107/freecodecamp2/blob/main/probability_calculator_dict.py), [2](https://github.com/rhythm2107/freecodecamp2/blob/main/probability_calculator_list.py))*.
