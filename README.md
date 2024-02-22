@@ -2,7 +2,7 @@
 This is a repository with all projects that I created by coding along with FreeCodeCamp's intermediate Python course. This course is fully **practical** and **interactive**, giving hints but not answers, forcing you to **do your own research** and find the correct approach & solution. You can check their course [-here-](https://www.freecodecamp.org/learn/scientific-computing-with-python/).
 
 My certification confirming completion of the course: [-link-](https://www.freecodecamp.org/certification/fccd97130e7-5c4d-425e-a576-408d8cfa3c64/scientific-computing-with-python-v7)
-
+ 
 The course will require you to create **15 projects**, each of which focus on different concept *(check list below)*.
 
 Ten projects with hints on what concepts to use:
