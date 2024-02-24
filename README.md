@@ -16,7 +16,7 @@ Ten projects with hints on what concepts to use:
 8. Merge Sort Algorithm using **Recursion** *(My attempt: [1](https://github.com/rhythm2107/freecodecamp2/blob/main/merge_sort_algo.py))*
 9. Sudoku Solver using **Object Oriented Programming** *(My attempt: [1](https://github.com/rhythm2107/freecodecamp2/blob/main/sudoku_solver.py))*
 10. Tree Traversal using **Binary Search Tree** *(My attempt: [1](https://github.com/rhythm2107/freecodecamp2/blob/main/tree_traversal.py))*
-
+ 
 And five projects without any hints:
 1. Arithmetic Formatter *(My attempt: [1](https://github.com/rhythm2107/freecodecamp2/blob/main/arithmetics_formatter.py))*
 2. Time Calculator *(My attempt: [1](https://github.com/rhythm2107/freecodecamp2/blob/main/time_calculator.py))*
